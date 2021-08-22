@@ -89,7 +89,7 @@ function App() {
               <img src={pictures[prevI].url} alt='picture_of_the_day' className='img_gallery_bg' ref={bgImg} />
             </div>
             <RightIcon size={70} color='c01a1a' onClick={() => handleRight()} className='icon-right' />
-            <BottomIcon size={70} color='00ffa9' onClick={() => slideDownHandle()} className='icon-bottom' />
+            <BottomIcon size={70} color='cccccc' onClick={() => slideDownHandle()} className='icon-bottom' />
           </div>
 
       }
@@ -99,6 +99,7 @@ function App() {
             author={pictures[index].copyright}
             title={pictures[index].title}
             url={pictures[index].url}
+            date={pictures[index].date}
             slideDownHandler={setSlideDown}
           />
           : null

@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { IoIosArrowDropupCircle as UpIcon } from "react-icons/io";
 import { gsap } from "gsap";
 
-const Picture = ({ author, title, url, slideDownHandler }) => {
+const Picture = ({ author, title, url, date, slideDownHandler }) => {
   const container = useRef(null)
   const img = useRef(null)
   const details = useRef(null)
@@ -44,8 +44,9 @@ const Picture = ({ author, title, url, slideDownHandler }) => {
       <div className='picture-details' ref={details}>
         <h2>{title}</h2>
         <h4>{author}</h4>
+        <span>{date}</span>
       </div>
-      <UpIcon size={70} color='white' onClick={() => slideUpHandle()} className='icon-up' />
+      <UpIcon size={70} color='black' onClick={() => slideUpHandle()} className='icon-up' />
     </div>
   )
 }

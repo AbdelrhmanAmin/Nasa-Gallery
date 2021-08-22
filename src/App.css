@@ -29,7 +29,7 @@
   width: 80%;
   margin: auto;
   position: relative;
-  border: 25px solid white;
+  border: 25px solid #1800453b;
 }
 .gallery-img-container {
   width: 100%;
@@ -92,8 +92,9 @@
 }
 .icon-up {
   position: absolute;
-  bottom: 15%;
-  animation: shake-animation 4.72s ease infinite;
+  bottom: 20%;
+  right: 20%;
+  animation: shake-animation 3.72s ease infinite;
   transform-origin: 50% 50%;
 }
 
