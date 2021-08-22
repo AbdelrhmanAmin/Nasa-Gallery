@@ -1,7 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import "./App.css";
 import { getNASAPictures } from "./NasaAPI";
-import { gsap } from "gsap";
 import Picture from './components/Picture';
 import Placeholder from './assets/loading.gif';
 import { IoIosArrowDroprightCircle as RightIcon } from "react-icons/io";
@@ -57,21 +56,20 @@ function App() {
         !pictures ? <img src={Placeholder} alt='placeholder_loading_gif' className='loading-gif' /> :
           <div className='gallery'>
             <LeftIcon size={70} color='white' onClick={() => handleLeft()} className='icon-left' />
-            <img src={pictures[i].url} alt='current_img' />
+            <img src={pictures[i].url} alt='picture_of_the_day' className='img_gallery' />
             <RightIcon size={70} color='white' onClick={() => handleRight()} className='icon-right' />
-            <BottomIcon size={70} color='white' onClick={() => slideDownHandle()} className='icon-bottom' />
+            <BottomIcon size={70} color='00ffa9' onClick={() => slideDownHandle()} className='icon-bottom' />
           </div>
 
       }
       {
         slideDown ?
-          <div>
-            <Picture
-              author={pictures[index].copyright}
-              title={pictures[index].title}
-              url={pictures[index].url}
-            />
-          </div>
+          <Picture
+            author={pictures[index].copyright}
+            title={pictures[index].title}
+            url={pictures[index].url}
+            slideDownHandler={setSlideDown}
+          />
           : null
       }
     </div>
