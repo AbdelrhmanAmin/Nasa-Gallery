@@ -26,13 +26,12 @@ function App() {
       setPrevIndex(i)
       setIndex(i + 1)
     }
-    gsap.to(img.current, {
-      x: -1500,
+    gsap.from(img.current, {
+      x: -800,
       ease: "circ.out",
     })
     gsap.to(img.current, {
       x: 0,
-      delay: 0.5,
       ease: "circ.out",
     })
   }
@@ -44,13 +43,12 @@ function App() {
       setPrevIndex(i)
       setIndex(i - 1)
     }
-    gsap.to(img.current, {
-      x: 1500,
+    gsap.from(img.current, {
+      x: 800,
       ease: "circ.out",
     })
     gsap.to(img.current, {
       x: 0,
-      delay: 0.5,
       ease: "circ.out",
     })
   }
