@@ -9,44 +9,34 @@ const Picture = ({ author, title, url, slideDownHandler }) => {
   useEffect(() => {
     // container from above
     gsap.from(container.current, {
-      y: -2500,
-      delay: 0.5,
-      ease: "power4.out",
+      y: -700,
+      delay: 1,
+      ease: "power3.out",
     })
     // img from left
     gsap.from(img.current, {
-      x: -2500,
+      x: -1200,
       delay: 1.5,
-      ease: "power4.out",
+      ease: "circ.out",
     })
     // text from right
     gsap.from(details.current, {
-      x: 2500,
+      x: 1500,
       delay: 1.5,
-      ease: "power4.out",
+      ease: "circ.out",
     })
+
   }, [])
   const slideUpHandle = () => {
-    // container to above
     gsap.to(container.current, {
-      y: 2500,
+      y: -800,
       delay: 0.5,
-      ease: "power4.out",
+      ease: "slow(0.7, 0.7, false)",
     })
-    // img to left
-    gsap.to(img.current, {
-      x: 2500,
-      delay: 1.5,
-      ease: "power4.out",
-    })
-    // text to right
-    gsap.to(details.current, {
-      x: -2500,
-      delay: 1.5,
-      ease: "power4.out",
-    })
-    const t1 = setTimeout(() => slideDownHandler(false), 2000)
-    return () => clearTimeout(t1)
+    const t1 = setTimeout(() => {
+      slideDownHandler(false)
+      clearTimeout(t1)
+    }, 1500)
   }
   return (
     <div className='picture-container' ref={container}>

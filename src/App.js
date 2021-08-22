@@ -37,7 +37,7 @@ function App() {
   useEffect(() => {
     if (!pictures) { // if pictures is null
       const startDate = new Date("2021-08-20T08:28:41.917Z"); // start day: 2021-08-20
-      const endDate = new Date(); //Today
+      const endDate = new Date("2021-08-22T08:28:41.917Z"); //Today
       getNASAPictures(startDate, endDate).then((res) => {
         updatePictures(res);
       });
