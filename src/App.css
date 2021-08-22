@@ -30,7 +30,6 @@
   margin: auto;
   position: relative;
   border: 25px solid white;
-  border-radius: 25px;
 }
 .gallery-img-container {
   width: 100%;
@@ -62,8 +61,10 @@
 }
 .icon-bottom {
   position: absolute;
-  bottom: -10%;
+  top: -12%;
   z-index: 1;
+  animation: shake-animation 4.72s ease infinite;
+  transform-origin: 50% 50%;
 }
 
 /* Picture component */
@@ -91,5 +92,34 @@
 }
 .icon-up {
   position: absolute;
-  top: 15%;
+  bottom: 15%;
+  animation: shake-animation 4.72s ease infinite;
+  transform-origin: 50% 50%;
+}
+
+@keyframes shake-animation {
+  0% {
+    transform: translate(0, 0);
+  }
+  1.78571% {
+    transform: translate(0, 3px);
+  }
+  3.57143% {
+    transform: translate(0, 0);
+  }
+  5.35714% {
+    transform: translate(0, 3px);
+  }
+  7.14286% {
+    transform: translate(0, 0);
+  }
+  8.92857% {
+    transform: translate(0, 3px);
+  }
+  10.71429% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
 }
