@@ -70,8 +70,7 @@ function App() {
   }
   const touchMoveHandler = (e) => {
     setDiffX(startPointX - e.touches[0].clientX)
-    setDiffY(startPointY - e.touches[0].clientX)
-    console.log(startPointX, diffY)
+    setDiffY(startPointY - e.touches[0].clientY)
   }
   const touchEndHandler = () => {
     if (diffY < 0) {
@@ -99,16 +98,27 @@ function App() {
   useEffect(() => {
     if (pictures) {
       var interval = setInterval(() => handleRight(), 5000)
-      // const mobile = window.matchMedia('(max-width: 480px)')
-      // const tablet = window.matchMedia('(max-width: 768px)')
-      // const laptop = window.matchMedia('(min-width: 768px)')
-      // // Check if the media query is true
-      // if (tablet.matches) {
-      //   swipeLeft.current.style.display = 'block'
-      // }
-      // if (laptop.matches) {
-      //   swipeLeft.current.style.display = 'none'
-      // }
+      // Check if the media query is true
+      if (window.innerWidth <= 768) {
+        swipeLeft.current.style.display = 'block'
+        swipeDown.current.style.display = 'block'
+        setTimeout(() => {
+          gsap.to(swipeLeft.current, {
+            opacity: 0,
+            duration: 1,
+            ease: 'power4.out'
+          })
+          gsap.to(swipeDown.current, {
+            opacity: 0,
+            duration: 1,
+            ease: 'power4.out'
+          })
+        }, 5000)
+      }
+      if (window.innerWidth > 768) {
+        swipeLeft.current.style.display = 'none'
+        swipeDown.current.style.display = 'none'
+      }
     }
     return () => clearInterval(interval)
   })
@@ -123,6 +133,7 @@ function App() {
               <img onTouchEnd={() => touchEndHandler()} onTouchStart={(e) => touchStartHandler(e)} onTouchMove={(e) => touchMoveHandler(e)} src={pictures[i].url} alt='picture_of_the_day' className='img_gallery' ref={img} />
               <img src={pictures[prevI].url} alt='picture_of_the_day' className='img_gallery_bg' ref={bgImg} />
               <img src={swipe} alt='swipe_gif' className='swipe-left-gif' ref={swipeLeft} />
+              <img src={swipe} alt='swipe_gif' className='swipe-down-gif' ref={swipeDown} />
             </div>
             <RightIcon size={70} onClick={() => handleRight()} className='icon-right' />
             <BottomIcon size={70} color='cccccc' onClick={() => slideDownHandle()} className='icon-bottom' ref={btnSwipe} />

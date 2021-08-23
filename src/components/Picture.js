@@ -44,7 +44,7 @@ const Picture = ({ author, title, url, date, slideDownHandler }) => {
     setStartPointY(e.touches[0].clientY)
   }
   const touchMoveHandler = (e) => {
-    setDiffY(startPointY - e.touches[0].clientX)
+    setDiffY(startPointY - e.touches[0].clientY)
   }
   const touchEndHandler = () => {
     if (diffY > 0) {
