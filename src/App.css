@@ -53,11 +53,15 @@
   position: absolute;
   right: -4%;
   z-index: 5;
+  color: #1d2951;
+  mix-blend-mode: screen;
 }
 .icon-left {
   position: absolute;
   left: -4%;
   z-index: 5;
+  color: #1d2951;
+  mix-blend-mode: screen;
 }
 .icon-bottom {
   position: absolute;
@@ -122,5 +126,34 @@
   }
   100% {
     transform: translate(0, 0);
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .gallery {
+    height: 90%;
+    width: 100%;
+    border-inline: none;
+  }
+  .icon-left {
+    left: 0;
+    color: white;
+  }
+  .icon-right {
+    right: 0;
+    color: white;
+  }
+  .picture-container {
+    justify-content: space-between;
+    padding: 0;
+  }
+  .picture-details {
+    margin: 0 20px;
+  }
+  .picture-title {
+    font-size: 18px;
+  }
+  .picture-author {
+    font-size: 14px;
   }
 }

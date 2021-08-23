@@ -36,14 +36,14 @@ const Picture = ({ author, title, url, date, slideDownHandler }) => {
     const t1 = setTimeout(() => {
       slideDownHandler(false)
       clearTimeout(t1)
-    }, 1500)
+    }, 1200)
   }
   return (
     <div className='picture-container' ref={container}>
       <img src={url} alt='picture_of_the_day' className='img' ref={img} />
       <div className='picture-details' ref={details}>
-        <h2>{title}</h2>
-        <h4>{author}</h4>
+        <h2 className='picture-title'>{title}</h2>
+        <h4 className='picture-author'>{author}</h4>
         <span>{date}</span>
       </div>
       <UpIcon size={70} color='black' onClick={() => slideUpHandle()} className='icon-up' />

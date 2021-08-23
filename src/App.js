@@ -16,6 +16,7 @@ function App() {
   const [slideDown, setSlideDown] = useState(false)
   const img = useRef(null)
   const bgImg = useRef(null)
+  const btnSwipe = useRef(null)
   const handleRight = () => {
 
     console.log(`i: ${i}, prevI: ${prevI}`)
@@ -81,13 +82,13 @@ function App() {
       {
         !pictures ? <img src={Placeholder} alt='placeholder_loading_gif' className='loading-gif' /> :
           <div className='gallery'>
-            <LeftIcon size={70} color='c01a1a' onClick={() => handleLeft()} className='icon-left' />
+            <LeftIcon size={70} onClick={() => handleLeft()} className='icon-left' />
             <div className='gallery-img-container'>
               <img src={pictures[i].url} alt='picture_of_the_day' className='img_gallery' ref={img} />
               <img src={pictures[prevI].url} alt='picture_of_the_day' className='img_gallery_bg' ref={bgImg} />
             </div>
-            <RightIcon size={70} color='c01a1a' onClick={() => handleRight()} className='icon-right' />
-            <BottomIcon size={70} color='cccccc' onClick={() => slideDownHandle()} className='icon-bottom' />
+            <RightIcon size={70} onClick={() => handleRight()} className='icon-right' />
+            <BottomIcon size={70} color='cccccc' onClick={() => slideDownHandle()} className='icon-bottom' ref={btnSwipe} />
           </div>
 
       }
