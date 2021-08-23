@@ -4,6 +4,7 @@ import { getNASAPictures } from "./NasaAPI";
 import { gsap } from "gsap";
 import Picture from './components/Picture';
 import Placeholder from './assets/loading.gif';
+import swipe from './assets/swipe.gif';
 import { IoIosArrowDroprightCircle as RightIcon } from "react-icons/io";
 import { IoIosArrowDropleftCircle as LeftIcon } from "react-icons/io";
 import { IoIosArrowDropdownCircle as BottomIcon } from "react-icons/io";
@@ -14,11 +15,15 @@ function App() {
   const [prevI, setPrevIndex] = useState(0)
   const [index, setCurrentIndex] = useState(0)
   const [slideDown, setSlideDown] = useState(false)
-  const [startPoint, setStartPoint] = useState(0)
-  const [diff, setDiff] = useState(0)
+  const [startPointX, setStartPointX] = useState(0)
+  const [startPointY, setStartPointY] = useState(0)
+  const [diffX, setDiffX] = useState(0)
+  const [diffY, setDiffY] = useState(0)
   const img = useRef(null)
   const bgImg = useRef(null)
   const btnSwipe = useRef(null)
+  const swipeLeft = useRef(null)
+  const swipeDown = useRef(null)
   const handleRight = () => {
     console.log('swipe-right')
     if (i === pictures.length - 1) {
@@ -60,17 +65,22 @@ function App() {
     setCurrentIndex(i)
   }
   const touchStartHandler = (e) => {
-    setStartPoint(e.touches[0].clientX)
+    setStartPointX(e.touches[0].clientX)
+    setStartPointY(e.touches[0].clientY)
   }
   const touchMoveHandler = (e) => {
-    setDiff(startPoint - e.touches[0].clientX)
+    setDiffX(startPointX - e.touches[0].clientX)
+    setDiffY(startPointY - e.touches[0].clientX)
+    console.log(startPointX, diffY)
   }
   const touchEndHandler = () => {
-    console.log(startPoint, diff)
-    if (diff > 20) {
+    if (diffY < 0) {
+      slideDownHandle()
+    }
+    if (diffX > 20) {
       handleLeft()
     }
-    if (diff < -20) {
+    if (diffX < -20) {
       handleRight()
     }
   }
@@ -89,6 +99,16 @@ function App() {
   useEffect(() => {
     if (pictures) {
       var interval = setInterval(() => handleRight(), 5000)
+      // const mobile = window.matchMedia('(max-width: 480px)')
+      // const tablet = window.matchMedia('(max-width: 768px)')
+      // const laptop = window.matchMedia('(min-width: 768px)')
+      // // Check if the media query is true
+      // if (tablet.matches) {
+      //   swipeLeft.current.style.display = 'block'
+      // }
+      // if (laptop.matches) {
+      //   swipeLeft.current.style.display = 'none'
+      // }
     }
     return () => clearInterval(interval)
   })
@@ -102,6 +122,7 @@ function App() {
             <div className='gallery-img-container'>
               <img onTouchEnd={() => touchEndHandler()} onTouchStart={(e) => touchStartHandler(e)} onTouchMove={(e) => touchMoveHandler(e)} src={pictures[i].url} alt='picture_of_the_day' className='img_gallery' ref={img} />
               <img src={pictures[prevI].url} alt='picture_of_the_day' className='img_gallery_bg' ref={bgImg} />
+              <img src={swipe} alt='swipe_gif' className='swipe-left-gif' ref={swipeLeft} />
             </div>
             <RightIcon size={70} onClick={() => handleRight()} className='icon-right' />
             <BottomIcon size={70} color='cccccc' onClick={() => slideDownHandle()} className='icon-bottom' ref={btnSwipe} />

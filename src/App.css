@@ -101,6 +101,12 @@
   animation: shake-animation 3.72s ease infinite;
   transform-origin: 50% 50%;
 }
+.swipe-left-gif {
+  position: absolute;
+  z-index: 1001;
+  width: 100px;
+  display: none;
+}
 
 @keyframes shake-animation {
   0% {
@@ -135,6 +141,9 @@
     width: 100%;
     border-inline: none;
   }
+  .swipe-left-gif {
+    display: block;
+  }
   .icon-left {
     left: 0;
     color: white;
@@ -155,5 +164,49 @@
   }
   .picture-author {
     font-size: 14px;
+  }
+}
+@media only screen and (max-width: 480px) {
+  .gallery {
+    height: 100%;
+    width: 100%;
+    border-inline: none;
+  }
+  .icon-left {
+    left: 0;
+    color: white;
+    display: none;
+  }
+  .icon-right {
+    right: 0;
+    color: white;
+    display: none;
+  }
+  .icon-bottom {
+    top: 0%;
+    color: white;
+  }
+  .picture-container {
+    justify-content: space-between;
+    padding: 0;
+  }
+  .picture-details {
+    margin: 0 20px;
+    position: absolute;
+    color: white;
+    top: 15%;
+  }
+  .picture-title {
+    font-size: 18px;
+  }
+  .picture-author {
+    font-size: 14px;
+  }
+  .img {
+    width: 100%;
+  }
+  .icon-up {
+    color: white !important;
+    right: 10%;
   }
 }
