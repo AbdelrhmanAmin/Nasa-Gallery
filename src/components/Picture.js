@@ -51,11 +51,11 @@ const Picture = ({ author, title, url, date, slideDownHandler }) => {
     }
   }
   return (
-    <div className='picture-container' ref={container} onTouchEnd={() => touchEndHandler()} onTouchStart={(e) => touchStartHandler(e)} onTouchMove={(e) => touchMoveHandler(e)} >
-      <img src={url} alt='picture_of_the_day' className='img' ref={img} />
+    <div className='picture-container' data-testid='current-picture-container' ref={container} onTouchEnd={() => touchEndHandler()} onTouchStart={(e) => touchStartHandler(e)} onTouchMove={(e) => touchMoveHandler(e)} >
+      <img src={url} alt='picture_of_the_day' className='img' ref={img} data-testid='current-picture' />
       <div className='picture-details' ref={details}>
-        <h2 className='picture-title'>{title}</h2>
-        <h4 className='picture-author'>{author}</h4>
+        <h2 data-testid='current-picture-title' className='picture-title'>{title}</h2>
+        <h4 data-testid='current-picture-author' className='picture-author'>{author}</h4>
         <span>{date}</span>
       </div>
       <UpIcon size={70} color='black' onClick={() => slideUpHandle()} className='icon-up' />
