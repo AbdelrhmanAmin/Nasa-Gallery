@@ -14,12 +14,13 @@ function App() {
   const [prevI, setPrevIndex] = useState(0)
   const [index, setCurrentIndex] = useState(0)
   const [slideDown, setSlideDown] = useState(false)
+  const [startPoint, setStartPoint] = useState(0)
+  const [diff, setDiff] = useState(0)
   const img = useRef(null)
   const bgImg = useRef(null)
   const btnSwipe = useRef(null)
   const handleRight = () => {
-
-    console.log(`i: ${i}, prevI: ${prevI}`)
+    console.log('swipe-right')
     if (i === pictures.length - 1) {
       setPrevIndex(i)
       setIndex(0)
@@ -37,6 +38,7 @@ function App() {
     })
   }
   const handleLeft = () => {
+    console.log('swipe-left')
     if (i === 0) {
       setPrevIndex(i)
       setIndex(pictures.length - 1)
@@ -57,6 +59,21 @@ function App() {
     setSlideDown(true)
     setCurrentIndex(i)
   }
+  const touchStartHandler = (e) => {
+    setStartPoint(e.touches[0].clientX)
+  }
+  const touchMoveHandler = (e) => {
+    setDiff(startPoint - e.touches[0].clientX)
+  }
+  const touchEndHandler = () => {
+    console.log(startPoint, diff)
+    if (startPoint > 350 && diff > 20) {
+      handleLeft()
+    }
+    if (startPoint < 350 && diff < -20) {
+      handleRight()
+    }
+  }
   useEffect(() => {
     if (!pictures) { // if pictures is null
       const startDate = new Date("2021-08-20T08:28:41.917Z"); // start day: 2021-08-20
@@ -70,7 +87,6 @@ function App() {
     }
   }, [pictures]); //if pictures changes, re-render.
   useEffect(() => {
-    console.log(i, prevI)
     if (pictures) {
       var interval = setInterval(() => handleRight(), 5000)
     }
@@ -84,7 +100,7 @@ function App() {
           <div className='gallery'>
             <LeftIcon size={70} onClick={() => handleLeft()} className='icon-left' />
             <div className='gallery-img-container'>
-              <img src={pictures[i].url} alt='picture_of_the_day' className='img_gallery' ref={img} />
+              <img onTouchEnd={() => touchEndHandler()} onTouchStart={(e) => touchStartHandler(e)} onTouchMove={(e) => touchMoveHandler(e)} src={pictures[i].url} alt='picture_of_the_day' className='img_gallery' ref={img} />
               <img src={pictures[prevI].url} alt='picture_of_the_day' className='img_gallery_bg' ref={bgImg} />
             </div>
             <RightIcon size={70} onClick={() => handleRight()} className='icon-right' />
