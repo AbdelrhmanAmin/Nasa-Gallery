@@ -67,10 +67,10 @@ function App() {
   }
   const touchEndHandler = () => {
     console.log(startPoint, diff)
-    if (startPoint > 350 && diff > 20) {
+    if (diff > 20) {
       handleLeft()
     }
-    if (startPoint < 350 && diff < -20) {
+    if (diff < -20) {
       handleRight()
     }
   }
