@@ -12,6 +12,10 @@
 - JEST
 - React-testing-library
 
+## LIVE PREVIEW
+
+[![Watch the video](./screenshot.png)](https://www.loom.com/share/dbe7c965c742484f87d03a23706fb584)
+
 ## LIVE DEMO
 
 http://abdoamin.me/Nasa-Gallery/
