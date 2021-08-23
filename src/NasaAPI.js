@@ -11,7 +11,7 @@ function transformDateForAPIRequest(date) {
   if (day < 10) {
     day = `0${day}`;
   }
-  return `${year}-${month}-${day}`;
+  return `${year}-${month}-${day}`; // format 2021-08-22
 }
 
 export function getNASAPictures(startDate, endDate) {
