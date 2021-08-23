@@ -1,6 +1,6 @@
 # ⚛️ Nasa Gallery 🛸
 
-> ## A gallery of the latest NASA’s Astronomy Picture of the Day.
+> ### A gallery of the latest NASA’s Astronomy Picture of the Day.
 
 ![Screenshot](./Nasa.jpg)
 
