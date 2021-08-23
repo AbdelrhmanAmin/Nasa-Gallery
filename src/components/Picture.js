@@ -12,19 +12,18 @@ const Picture = ({ author, title, url, date, slideDownHandler }) => {
     // container from above
     gsap.from(container.current, {
       y: -700,
-      delay: 1,
       ease: "power3.out",
     })
     // img from left
     gsap.from(img.current, {
       x: -1200,
-      delay: 1.5,
+      delay: 0.5,
       ease: "circ.out",
     })
     // text from right
     gsap.from(details.current, {
       x: 1500,
-      delay: 1.5,
+      delay: 0.3,
       ease: "circ.out",
     })
 

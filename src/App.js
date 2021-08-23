@@ -73,7 +73,7 @@ function App() {
     setDiffY(startPointY - e.touches[0].clientY)
   }
   const touchEndHandler = () => {
-    if (diffY < 0) {
+    if (diffY < -40) {
       slideDownHandle()
     }
     if (diffX > 20) {
@@ -128,14 +128,14 @@ function App() {
       {
         !pictures ? <img src={Placeholder} alt='placeholder_loading_gif' className='loading-gif' /> :
           <div className='gallery'>
-            <LeftIcon size={70} onClick={() => handleLeft()} className='icon-left' />
+            <RightIcon size={70} onClick={() => handleLeft()} className='icon-left' />
             <div className='gallery-img-container'>
               <img onTouchEnd={() => touchEndHandler()} onTouchStart={(e) => touchStartHandler(e)} onTouchMove={(e) => touchMoveHandler(e)} src={pictures[i].url} alt='picture_of_the_day' className='img_gallery' ref={img} />
               <img src={pictures[prevI].url} alt='picture_of_the_day' className='img_gallery_bg' ref={bgImg} />
               <img src={swipe} alt='swipe_gif' className='swipe-left-gif' ref={swipeLeft} />
               <img src={swipe} alt='swipe_gif' className='swipe-down-gif' ref={swipeDown} />
             </div>
-            <RightIcon size={70} onClick={() => handleRight()} className='icon-right' />
+            <LeftIcon size={70} onClick={() => handleRight()} className='icon-right' />
             <BottomIcon size={70} color='cccccc' onClick={() => slideDownHandle()} className='icon-bottom' ref={btnSwipe} />
           </div>
 
