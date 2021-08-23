@@ -96,6 +96,7 @@ const App = ({ picturesTest = null }) => {
         setPrevIndex(pictures.length - 1)
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pictures]); //if pictures changes, re-render.
   useEffect(() => {
     if (pictures) {
